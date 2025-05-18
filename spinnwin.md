@@ -608,6 +608,283 @@ Rev. Date: 1/6/2006 Page 22 of 34
 Skee Ball Inc. (Corporate Offices) • 121 Liberty Lane • Chalfont, PA 18914 • USA • (215) 997-8900 • Fax (215) 997-8982
 Phoenix Offices: (Sports Games Division) • 3669 East La Salle Street • Phoenix, AZ 85040 • USA • (602) 470-1490 • Fax (602) 470-1495
 
+
+## **Electronics Schamatic **
+
+**Overall System Components:**
+
+1.  **LOGIC BOARD EA3729F1:** The central control board.
+2.  **LAMP DRIVER 1, 2, 3, 4, 5:** Boards to drive lamps.
+3.  **4 DIG. DISP.:** 4-digit display.
+4.  **POWER SUPPLY EA2508:** Provides various DC and AC voltages.
+5.  **SPKR(L) MS161:** Speaker.
+6.  **COIN DOOR EA4166:** Coin mechanism interface.
+7.  **TICKET DOOR (L) SM4131-1:** Ticket dispenser interface.
+8.  **HANDLE SWITCH:** Input switch.
+9.  **STOP BUTTON:** Input switch.
+10. **ARROW LED PCB:** PCB for arrow indicator LEDs.
+11. **STOP STROBE:** Strobe light assembly.
+12. **LOAD:** An inductive load or solenoid.
+13. **BELL:** A physical bell.
+14. **COLOR MOTOR:** Motor for a color wheel or similar.
+15. **Various Switches:** TEST, AUX 1, AUX 2, "6' ONLY" config switch.
+16. **AC Input Assembly:** 3-way AC plug, main switch, fuse.
+
+**Connections Details:**
+
+**I. POWER INPUT & MAIN POWER SUPPLY (EA2508):**
+
+*   **AC Input:**
+    *   TO 3 WAY AC PLUG:
+        *   BLK (Live) -> Main Power Switch (Terminal 1)
+        *   WHT (Neutral) -> Main Power Switch (Terminal 2)
+        *   GRN (Earth) -> Chassis Ground & POWER SUPPLY EA2508 Pin 2 (AC E)
+    *   Main Power Switch Output:
+        *   BLK (Live from Terminal 1) -> FUSE
+        *   WHT (Neutral from Terminal 2) -> POWER SUPPLY EA2508 Pin 1 (AC N)
+    *   FUSE Output:
+        *   BLK (Live) -> POWER SUPPLY EA2508 Pin 3 (AC L)
+
+*   **POWER SUPPLY EA2508 Outputs:**
+    *   **Connector J1 (DC to LOGIC BOARD via 52022-8):**
+        *   Pin 1 (+12VDC, YEL) -> LOGIC BOARD J1.1 (+12VDC)
+        *   Pin 2 (GND, BLK) -> LOGIC BOARD J1.2 (GND)
+        *   Pin 3 (+5VDC, RED) -> LOGIC BOARD J1.3 (+5VDC)
+        *   Pin 4 (GND, BLK) -> LOGIC BOARD J1.4 (GND)
+    *   **Connector J2 (AC to LOGIC BOARD and local AC loads):**
+        *   Pin 1 (AC HOT, RED) -> LOGIC BOARD J2.1 (AC HOT)
+        *   Pin 2 (AC N, BLK) -> LOGIC BOARD J2.2 (AC N)
+        *   Pin 3 (EARTH, GRN) -> LOGIC BOARD J2.3 (EARTH)
+    *   **Connector J3 (Switched AC Outputs, connected to LOGIC BOARD J3):**
+        *   PS J3.1 (AC OUT, YEL) <-> LOGIC BOARD J3.9 (AC OUT)  *(Note: diagram shows YEL from PS J3.1 to LB J3.1)*
+        *   PS J3.2 (AC N, BLK) <-> LOGIC BOARD J3.8 (AC N) *(Note: diagram shows BLK from PS J3.2 to LB J3.2)*
+        *   PS J3.3 (SHLD) - No connection shown
+        *   PS J3.4 (AC N, BLK) <-> LOGIC BOARD J3.6 (AC N)
+        *   PS J3.5 (AC OUT, WHT) <-> LOGIC BOARD J3.5 (AC OUT)
+        *   PS J3.6 (AC N, BLK) <-> LOGIC BOARD J3.4 (AC N)
+        *   PS J3.7 (AC OUT, BLU) <-> LOGIC BOARD J3.7 (AC OUT)
+        *   PS J3.8 (AC N) - No connection shown on PS side to LB
+        *   PS J3.9 (AC OUT) - No connection shown on PS side to LB
+        *(The LOGIC BOARD J3 pins are labeled 1-9: AC OUT, AC N, SHLD, AC N, AC OUT, AC N, AC OUT, AC N, AC OUT. The connections are:
+        PS J3.9(YEL) to LB J3.1(AC OUT), PS J3.8(BLK) to LB J3.2(AC N)
+        PS J3.7(BLU) to LB J3.3(AC OUT), PS J3.6(BLK) to LB J3.4(AC N)
+        PS J3.5(WHT) to LB J3.5(AC OUT), PS J3.4(BLK) to LB J3.6(AC N)
+        This needs to be interpreted as three AC pairs from PS J3 to LB J3.)*
+
+    *   **Output to COLOR MOTOR (via 52022-10:**
+        *   PS J3.1 (AC OUT, YEL) -> COLOR MOTOR Pin 1 (RED wire on motor)
+        *   PS J3.2 (AC N, BLK) -> COLOR MOTOR Pin 2 (BLK wire on motor)
+    *   **Output to LAMP DRIVER 1:**
+        *   3-pin connector:
+            *   Pin 1 (WHT) -> LAMP DRIVER 1, Input Pin 1 (+12V)
+            *   Pin 2 (GRN) -> LAMP DRIVER 1, Input Pin 2 (+5V)
+            *   Pin 3 (BLK) -> LAMP DRIVER 1, Input Pin 3 (GND)
+
+**II. LOGIC BOARD EA3729F1 Connections:**
+
+*   **J1 (DC Power Input from POWER SUPPLY J1 via 52022-8):**
+    *   Pin 1: +12VDC (from PS J1.1, YEL)
+    *   Pin 2: GND (from PS J1.2, BLK)
+    *   Pin 3: +5VDC (from PS J1.3, RED)
+    *   Pin 4: GND (from PS J1.4, BLK)
+*   **J2 (AC Power Input from POWER SUPPLY J2):**
+    *   Pin 1: AC HOT (from PS J2.1, RED)
+    *   Pin 2: AC N (from PS J2.2, BLK)
+    *   Pin 3: EARTH (from PS J2.3, GRN)
+*   **J3 (AC Power distribution with POWER SUPPLY J3):**
+    *   Pin 1: AC OUT (YEL, to PS J3.9)
+    *   Pin 2: AC N (BLK, to PS J3.8)
+    *   Pin 3: AC OUT (BLU, to PS J3.7)
+    *   Pin 4: AC N (BLK, to PS J3.6)
+    *   Pin 5: AC OUT (WHT, to PS J3.5)
+    *   Pin 6: AC N (BLK, to PS J3.4)
+    *   Pin 7: AC OUT
+    *   Pin 8: AC N
+    *   Pin 9: SHLD (Note: the diagram shows J3.1-J3.9 with labels AC OUT, AC N, SHLD, AC N, AC OUT, AC N, AC OUT, AC N, AC OUT. The connections above based on wire paths are slightly different in order than this labeling if it implies PS J3 pin numbers directly. The re-interpretation of PS J3 to LB J3 connections is complex).
+*   **J14 (Outputs to various devices via 52022-11):**
+    *   Pin 1: SHLD
+    *   Pin 2: ARROW LED 1 -> ARROW LED PCB Pin 3
+    *   Pin 3: ARROW LED 2 -> ARROW LED PCB Pin 2
+    *   Pin 4: ARROW LED 3 -> ARROW LED PCB Pin 1
+    *   Pin 5: ARROW LED SHLD -> ARROW LED PCB Pin 4
+    *   Pin 6: STOP LAMP (RED) -> STOP STROBE Pin 1
+    *   Pin 7: LOCK OUT (YEL) -> "LOAD" (solenoid/device) Pin 1
+    *   Pin 8: +12VDC (BLK) -> Common +12V for STOP STROBE Pin 2, "LOAD" Pin 2
+    *   Pin 9: GND
+    *   Pin 10: +12VDC
+    *   Pin 11: HANDLE SOLENOID (RED) -> "BELL" (solenoid/device) Pin 1
+    *   Pin 12: +12VDC (BLK) -> "BELL" Pin 2
+    *   Pins 13, 14, 15: +12VDC
+*   **J15 (Inputs from Switches via 52022-12):**
+    *   Pin 1: SHLD (WHT wire in cable) -> COM of HANDLE SWITCH, also common for other switches.
+    *   Pin 2: HANDLE DOWN (No connection shown in this specific diagram)
+    *   Pin 3: HANDLE UP (WHT wire in cable) -> NO of HANDLE SWITCH
+    *   Pin 4: STOP BUTTON (RED wire in cable) -> STOP BUTTON Pin 1 (Pin 2 of Stop Button is common/SHLD)
+    *   Pin 5: 6 FOOT GAME SELECT (BLK wire in cable) -> COM of "6' ONLY" Switch (NO contact of this switch goes to common/SHLD)
+    *   Pin 6: +12VDC
+*   **J16 (Switch connections via 52022-12):**
+    *   Pin 1: +12VDC (RED wire in cable) -> COM of a 3-position switch.
+    *   Pin 2: GND (BLK wire in cable) -> NC of another 3-position switch, also common/SHLD.
+*   **J17 (To COIN DOOR EA4166 via 52022-14):**
+    *   Pin 1: SHLD
+    *   Pin 2: COIN COUNTER (BLU) -> COIN DOOR CTR Pin 2
+    *   Pin 3: +12VDC
+    *   Pin 4: GND (BLK) -> Common with J17.8
+    *   Pin 5: +5VDC
+    *   Pin 6: COIN 1 (RED) -> COIN DOOR COIN Pin 1
+    *   Pin 7: COIN 2 ("6' ONLY" - no connection to this specific coin door)
+    *   Pin 8: GND (BLK) -> COIN DOOR CTR Pin 1
+*   **J18 (To TICKET DOOR SM4131-1 via 52022-15):**
+    *   Pin 1: SHIELD
+    *   Pin 2: TKT COUNTER (GRN) -> TICKET DOOR Pin 4
+    *   Pin 3: +12VDC (YEL) -> TICKET DOOR Pin 3
+    *   Pin 4: TKT NOTCH (RED) -> TICKET DOOR Pin 2
+    *   Pin 5: +12VDC
+    *   Pin 6: GND (BLK) -> TICKET DOOR Pin 1
+    *   Pin 7: TKT MOTOR (ORG) -> (To Ticket Motor, part of SM4131-1 assembly)
+    *   Pin 8: +5VDC
+    *   Pin 9: GND
+*   **J20 (To TEST/AUX Switches via 52022-16):**
+    *   Pin 1: SHLD
+    *   Pin 2: TEST (RED) -> TEST Switch Pin 1
+    *   Pin 3: AUX 2 (WHT) -> AUX 2 Switch Pin 1
+    *   Pin 4: AUX 1 (GRN) -> AUX 1 Switch Pin 1
+    *   Pin 5: GND (BLK) -> Common Pin 2 for TEST, AUX 2, AUX 1 Switches
+*   **J21 (AC Control Signals "TO P.S. AC OUT"):**
+    *   Pin 1: YEL
+    *   Pin 2: BLU
+    *   Pin 3: WHT
+    *(These are likely control signals to the Power Supply to switch specific AC outputs available on PS J3, which then feed back to LB J3. Or they directly drive AC loads if the PS J3 outputs are parallel.)*
+*   **J22 (To 4 DIG. DISP. and SPKR(L) MS161):**
+    *   **To SPKR(L) MS161 (via 52022-13):**
+        *   Pin 1 (RED) -> SPKR(L) Pin 1
+        *   Pin 2 (BLK) -> SPKR(L) Pin 2
+    *   **To 4 DIG. DISP. (via 52022-1):**
+        *   Pin 3: LED + (12V) (ORG) - Not directly to 4 DIG. DISP., but part of the bus
+        *   Pin 4: LED + (12V) (ORG) - Not directly to 4 DIG. DISP.
+        *   Pin 5: LED - (GND) (GRN) - Not directly to 4 DIG. DISP.
+        *   Pin 6: LED - (GND) (GRN) - Not directly to 4 DIG. DISP.
+        *   Pin 7: S-CLK (BRN) -> 4 DIG. DISP. Pin 3 (S-CLK)
+        *   Pin 8: S-ENBL (BLU) -> 4 DIG. DISP. Pin 5 (S-ENBL)
+        *   Pin 9: S-DATA (WHT) -> 4 DIG. DISP. Pin 4 (S-DATA)
+        *   Pin 10: S-STRB (YEL) -> 4 DIG. DISP. Pin 6 (S-STRB)
+        *   Pin 11: GND (BLK) -> 4 DIG. DISP. Pin 2 (GND)
+        *   Pin 12: 5V (RED) -> 4 DIG. DISP. Pin 1 (5V)
+        *(4 DIG. DISP also takes 12V (ORG) to its Pin 1, which is labeled 12V. This might be an error in my J22 pin 12 interpretation or the display has multiple power inputs. J22.12 is 5V. The 4 Dig Disp input pin 1 is ORG and labeled 12V. Its pin 2 is RED labeled 5V. So:
+        4 DIG. DISP Pin 1 (12V, ORG) <- J22.3 or J22.4 (12V, ORG)
+        4 DIG. DISP Pin 2 (5V, RED) <- J22.12 (5V, RED)
+        4 DIG. DISP Pin 3 (GND, GRN) <- J22.11 (GND, BLK)
+        4 DIG. DISP Pin 4 (S-CLK, BRN) <- J22.7 (S-CLK, BRN)
+        4 DIG. DISP Pin 5 (S-DATA, WHT) <- J22.9 (S-DATA, WHT)
+        4 DIG. DISP Pin 6 (S-ENBL, BLU) <- J22.8 (S-ENBL, BLU)
+        4 DIG. DISP Pin 7 (S-STRB, YEL) <- J22.10 (S-STRB, YEL)
+        The cable 52022-1 connects 4 DIG. DISP. pins 1-6 to J22 pins (ORG, RED, GRN, BLK, BRN, WHT, BLU, YEL) which map to J22 pins (12,11,7,9,8,10 respectively for signals, plus power).
+        It seems the 4 Dig Disp uses: ORG(12V), RED(5V), GRN(GND), BLK(L-GND), BRN(S-CLK), WHT(S-DATA), BLU(S-STRB), YEL(S-ENBL) which are available from J22 and become the bus for Lamp Drivers)*
+
+**III. 4 DIG. DISP. and LAMP DRIVER CHAIN:**
+
+*   **4 DIG. DISP. Input (from LOGIC BOARD J22 via 52022-1):**
+    *   Pin 1: 12V (ORG)
+    *   Pin 2: 5V (RED)
+    *   Pin 3: GND (GRN)
+    *   Pin 4: S-CLK (BRN) (Diagram shows BLK L GND for pin 4 on display side)
+    *   Pin 5: S-DATA (WHT) (Diagram shows BRN S-CLK for pin 5 on display side)
+    *   Pin 6: S-ENBL (BLU) (Diagram shows WHT S-DATA for pin 6 on display side)
+    *   Pin 7: S-STRB (YEL) (Diagram shows BLU S-STRB for pin 7 on display side)
+    *   Pin 8: (Not labeled on display side but YEL S-ENBL is the last signal from J22)
+    *(Re-checking 4 DIG. DISP input from J22 via 52022-1:
+    J22.12 (RED, 5V) -> Disp Pin 2 (5V)
+    J22.11 (BLK, GND) -> Disp Pin 3 (GND)
+    J22.10 (YEL, S-STRB) -> Disp Pin 7 (S-STRB)
+    J22.9 (WHT, S-DATA) -> Disp Pin 6 (S-DATA)
+    J22.8 (BLU, S-ENBL) -> Disp Pin 8 (S-ENBL) (assuming Disp has 8 pins for this connector)
+    J22.7 (BRN, S-CLK) -> Disp Pin 5 (S-CLK)
+    J22.3/4 (ORG, 12V) -> Disp Pin 1 (12V)
+    The Disp also has a BLK L-GND on its Pin 4, which is not clearly sourced from J22.
+    The cable 52022-1 is an 8-wire cable. The 4 DIG. DISP block shows 8 input pins and 8 output pins.
+    Input pins (color from J22 / 52022-1): 1:ORG(12V), 2:RED(5V), 3:GRN(GND), 4:BLK(L-GND), 5:BRN(S-CLK), 6:WHT(S-DATA), 7:BLU(S-STRB), 8:YEL(S-ENBL).
+    This full set of 8 signals/power lines passes from 4 DIG. DISP output to LAMP DRIVER 1 input via 52022-5.)*
+
+*   **LAMP DRIVER General Connections:**
+    *   **Input Bus (8-pin connector, e.g., 52022-5 for LD1 from 4 DIG. DISP.):**
+        *   Pin 1: ORG (+12V)
+        *   Pin 2: RED (+5V)
+        *   Pin 3: GRN (GND)
+        *   Pin 4: BLK (L GND)
+        *   Pin 5: BRN (S-CLK)
+        *   Pin 6: WHT (S-DATA)
+        *   Pin 7: BLU (S-STRB)
+        *   Pin 8: YEL (S-ENBL)
+    *   **Output (3-pin connector, e.g., 52022-2 from LD1 to LD2):**
+        *   Pin 1: WHT (S-ENBL_OUT)
+        *   Pin 2: GRN (S-STRB_OUT)
+        *   Pin 3: BLK (S-CLK_OUT)
+    *   **Daisy Chain Logic:**
+        *   The main bus (Pins 1,2,3,4,6 of the 8-pin input) is paralleled to all Lamp Drivers.
+        *   The signals S-CLK, S-STRB, S-ENBL are daisy-chained:
+            *   Output of LDx (WHT, GRN, BLK) connects to Input Pins 8 (YEL), 7 (BLU), 5 (BRN) respectively of LDx+1.
+    *   **Specific Daisy Chain Cables:**
+        *   4 DIG. DISP. Output (8 pins) -> 52022-5 -> LAMP DRIVER 1 Input (8 pins)
+        *   LAMP DRIVER 1 Output (3 pins) -> 52022-2 -> LAMP DRIVER 2 Input (pins 5,7,8)
+        *   LAMP DRIVER 2 Output (3 pins) -> 52022-6 -> LAMP DRIVER 3 Input (pins 5,7,8)
+        *   LAMP DRIVER 3 Output (3 pins) -> 52022-3 -> LAMP DRIVER 4 Input (pins 5,7,8)
+        *   LAMP DRIVER 4 Output (3 pins) -> 52022-7 -> LAMP DRIVER 5 Input (pins 5,7,8)
+        *   LAMP DRIVER 5 is the last in the chain.
+    *   **Power for LAMP DRIVER 1:**
+        *    Powered directly from POWER SUPPLY EA2508 output (WHT=+12V, GRN=+5V, BLK=GND).
+
+**IV. Other Peripheral Components & Switches:**
+
+*   **ARROW LED PCB (connected to LB J14 via 52022-11):**
+    *   Pin 1: ARROW LED 3 (from J14.4)
+    *   Pin 2: ARROW LED 2 (from J14.3)
+    *   Pin 3: ARROW LED 1 (from J14.2)
+    *   Pin 4: SHLD (from J14.5)
+*   **STOP STROBE (connected to LB J14 via 52022-11):**
+    *   Pin 1: STOP LAMP (from J14.6, RED wire)
+    *   Pin 2: +12VDC (from J14.8, BLK wire)
+*   **"LOAD" (solenoid/device, connected to LB J14 via 52022-11):**
+    *   Pin 1: LOCK OUT (from J14.7, YEL wire)
+    *   Pin 2: +12VDC (from J14.8, BLK wire)
+*   **"BELL" (solenoid/device, connected to LB J14 via 52022-11):**
+    *   Pin 1: HANDLE SOLENOID (from J14.11, RED wire)
+    *   Pin 2: +12VDC (from J14.12, BLK wire)
+*   **Separate AC Circuit for Bell/Load (near Power Supply):**
+    *   **Physical BELL component:**
+        *   Terminal 1: YEL wire, connects to Physical LOAD component Terminal 1.
+        *   Terminal 2: RED wire, connects to one end of 10 OHM Resistor.
+    *   **10 OHM Resistor:**
+        *   One end: RED wire to Physical BELL Terminal 2.
+        *   Other end: RED wire, T-junction to AC HOT (RED wire between LB J2.1 and PS J2.1).
+    *   **Physical LOAD component (coil symbol):**
+        *   Terminal 1: YEL wire, connects to Physical BELL component Terminal 1.
+        *   Terminal 2: BLK wire, T-junction to AC N (BLK wire between LB J2.2 and PS J2.2).
+*   **COLOR MOTOR (connected to PS J3 via 52022-10):**
+    *   Pin 1 (RED wire on motor): YEL wire from PS J3.1 (AC OUT)
+    *   Pin 2 (BLK wire on motor): BLK wire from PS J3.2 (AC N)
+*   **HANDLE SWITCH (part of 52022-12):**
+    *   COM: BLK wire (commoned with J15.1 SHLD, J16.2 GND, and other switch commons)
+    *   NO: WHT wire (to J15.3 HANDLE UP)
+*   **STOP BUTTON (part of 52022-12):**
+    *   Pin 1: RED wire (to J15.4 STOP BUTTON)
+    *   Pin 2: BLK wire (common/SHLD)
+*   **"6' ONLY" Switch (3-position, part of 52022-12):**
+    *   COM: BLK wire (to J15.5 6 FOOT GAME SELECT)
+    *   NO: BLK wire (common/SHLD)
+    *   NC: Not connected
+*   **Other Configuration Switches (part of 52022-12):**
+    *   Switch A (3-pos): COM -> RED wire from J16.1 (+12VDC). NO/NC not connected.
+    *   Switch B (3-pos): NC -> BLK wire (common/SHLD from J16.2 GND). COM/NO not connected.
+*   **COIN DOOR EA4166 (connected to LB J17 via 52022-14):**
+    *   CTR Pin 1: BLK wire (to J17.8 GND)
+    *   CTR Pin 2: BLU wire (to J17.2 COIN COUNTER)
+    *   COIN Pin (single): RED wire (to J17.6 COIN 1)
+*   **TICKET DOOR (L) SM4131-1 (connected to LB J18 via 52022-15):**
+    *   Pin 1 (BLK): GND (to J18.6)
+    *   Pin 2 (RED): TKT NOTCH (to J18.4)
+    *   Pin 3 (YEL): +12VDC (to J18.3)
+    *   Pin 4 (GRN): TKT COUNTER (to J18.2)
+
 ## Spin-N-Win Assembly and Operation Manual
 ### **Trouble-shooting Guide **
 
