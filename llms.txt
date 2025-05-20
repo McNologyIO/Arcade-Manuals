@@ -6,5 +6,5 @@ This repository aims to preserve and digitize arcade game manuals, providing acc
 
 ## Manuals
 
-- [Spin-n-Win (4 ft Version)](https://github.com/McNologyIO/Arcade-Manuals/blob/main/manuals/Manufacturer/Skee-ball/Spin-n-Win/spin-n-win.md): Markdown rendition of the Spin-n-Win arcade game manual, detailing specifications, troubleshooting guides, and maintenance procedures.
+- [Spin-n-Win (4 ft Version)](https://raw.githubusercontent.com/McNologyIO/Arcade-Manuals/refs/heads/main/spin-n-win.md): Markdown rendition of the Spin-n-Win arcade game manual, detailing specifications, troubleshooting guides, and maintenance procedures.
 
