@@ -3,4 +3,4 @@ This repo will hold service manuals for arcade games. This includes the original
 
 **List of Available Manuals**
 
-Spin-n-Win (4 ft Version) - https://raw.githubusercontent.com/McNologyIO/Arcade-Manuals/refs/heads/main/spin-n-win.md
+Spin-n-Win (4 ft Version) - https://raw.githubusercontent.com/McNologyIO/Arcade-Manuals/refs/heads/main/spin-n-win.md?raw=true
