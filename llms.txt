@@ -1,0 +1,10 @@
+# Arcade Manuals Repository
+
+> A curated collection of arcade game service manuals, available in both original PDF and Markdown formats, to facilitate maintenance, restoration, and AI-assisted analysis.
+
+This repository aims to preserve and digitize arcade game manuals, providing accessible resources for enthusiasts, technicians, and researchers. The inclusion of Markdown versions ensures compatibility with AI models and enhances searchability.
+
+## Manuals
+
+- [Spin-n-Win (4 ft Version)](https://github.com/McNologyIO/Arcade-Manuals/blob/main/manuals/Manufacturer/Skee-ball/Spin-n-Win/spin-n-win.md): Markdown rendition of the Spin-n-Win arcade game manual, detailing specifications, troubleshooting guides, and maintenance procedures.
+
